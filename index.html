@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
+    <title>Bus Pass Registration Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -52,12 +52,12 @@
         }
 
         #resetButton {
-            background-color: rgb(90, 90, 242);;
+            background-color: rgb(90, 90, 242);
             margin-top: 10px;
         }
 
         #resetButton:hover {
-            background-color: rgb(127, 127, 238);;
+            background-color: rgb(127, 127, 238);
         }
 
         #output {
@@ -71,9 +71,9 @@
 </head>
 <body>
     <div class="container">
-        <h2>Registration Form</h2>
-        <form id="registrationForm">
-            <label for="name">Name:</label><br>
+        <h2>Bus Pass Registration Form</h2>
+        <form id="busPassForm">
+            <label for="name">Full Name:</label><br>
             <input type="text" id="name" required><br><br>
 
             <label for="email">Email:</label><br>
@@ -82,8 +82,19 @@
             <label for="phone">Phone:</label><br>
             <input type="text" id="phone" required><br><br>
 
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" required><br><br>
+            <label for="dob">Date of Birth:</label><br>
+            <input type="date" id="dob" required><br><br>
+
+            <label for="address">Address:</label><br>
+            <input type="text" id="address" required><br><br>
+
+            <label for="passType">Bus Pass Type:</label><br>
+            <select id="passType" required>
+                <option value="">Select Pass Type</option>
+                <option value="Student">Student</option>
+                <option value="Senior">Senior</option>
+                <option value="Regular">Regular</option>
+            </select><br><br>
 
             <button type="submit">Submit</button>
             <button type="button" id="resetButton">Reset</button>
@@ -93,23 +104,27 @@
     </div>
     
     <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        document.getElementById('busPassForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form submission
 
             // Get form values
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
-            const password = document.getElementById('password').value;
+            const dob = document.getElementById('dob').value;
+            const address = document.getElementById('address').value;
+            const passType = document.getElementById('passType').value;
 
             // Display the input information
             const outputDiv = document.getElementById('output');
             outputDiv.innerHTML = `
-                <h3>Registration Information</h3>
-                <p><strong>Name:</strong> ${name}</p>
+                <h3>Bus Pass Registration Information</h3>
+                <p><strong>Full Name:</strong> ${name}</p>
                 <p><strong>Email:</strong> ${email}</p>
                 <p><strong>Phone:</strong> ${phone}</p>
-                <p><strong>Password:</strong> ${password}</p>
+                <p><strong>Date of Birth:</strong> ${dob}</p>
+                <p><strong>Address:</strong> ${address}</p>
+                <p><strong>Bus Pass Type:</strong> ${passType}</p>
             `;
             outputDiv.style.display = 'block';
         });
@@ -120,7 +135,9 @@
             document.getElementById('name').value = '';
             document.getElementById('email').value = '';
             document.getElementById('phone').value = '';
-            document.getElementById('password').value = '';
+            document.getElementById('dob').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('passType').value = '';
 
             // Hide output div
             document.getElementById('output').style.display = 'none';
